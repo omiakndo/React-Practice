@@ -13,11 +13,23 @@ const loadData = async() =>{
 }
 
 
-const displayData = country =>{
-    console.log(country)
+const displayData = countrys =>{
+    console.log(countrys)
+    const allCountiesHtml = countrys.map(country =>getCountryHtml(country))
+    console.log(allCountiesHtml[0])
+    const container = document.getElementById('countries')
+    container.innerHTML = allCountiesHtml.join(' ')
 }
 
-
+const getCountryHtml = country =>{
+    return`
+    <div class="country">
+        <h2>NAME: ${country.name.common}</h2>
+        <h2>CAPITAL: ${country?.capital}</h2>
+        <img src="${country.flags.png}">
+    </div>
+    `
+}
 
 
 loadData()
